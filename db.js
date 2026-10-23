@@ -4,16 +4,18 @@ let pool = null;
 
 function getPool() {
   if (!pool) {
-    const connectionString = process.env.DATABASE_URL;
+    let connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
       throw new Error('DATABASE_URL 环境变量未设置');
     }
+    // 移除可能导致连接问题的参数
+    connectionString = connectionString.replace(/&channel_binding=require/g, '').replace(/channel_binding=require&?/g, '');
     pool = new Pool({
       connectionString,
-      ssl: { rejectUnauthorized: false },
+      ssl: 'require',
       max: 3,
       idleTimeoutMillis: 10000,
-      connectionTimeoutMillis: 10000,
+      connectionTimeoutMillis: 15000,
     });
     pool.on('error', (err) => {
       console.error('数据库连接池错误:', err.message);
