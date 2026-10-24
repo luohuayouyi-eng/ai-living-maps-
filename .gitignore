@@ -1,6 +1,6 @@
 node_modules/
-data/
 *.log
-*.txt
 .env
-.DS_Store
+lt_err.txt
+lt_out.txt
+data/db.json
