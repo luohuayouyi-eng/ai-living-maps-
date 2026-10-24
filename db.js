@@ -10,9 +10,13 @@ function getPool() {
     }
     // 移除可能导致连接问题的参数
     connectionString = connectionString.replace(/&channel_binding=require/g, '').replace(/channel_binding=require&?/g, '');
+    // 添加兼容参数，避免pg将require当作verify-full
+    if (!connectionString.includes('uselibpqcompat')) {
+      connectionString += (connectionString.includes('?') ? '&' : '?') + 'uselibpqcompat=true';
+    }
     pool = new Pool({
       connectionString,
-      ssl: 'require',
+      ssl: { rejectUnauthorized: false },
       max: 3,
       idleTimeoutMillis: 10000,
       connectionTimeoutMillis: 15000,
