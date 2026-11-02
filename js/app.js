@@ -235,6 +235,16 @@ function renderEcosystemMap(content) {
 // ==================== 认知地图渲染 ====================
 
 function renderCognitiveMap(content) {
+ return `
+  <div style="width: 100%; height: 80vh; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color, #333);">
+    <iframe 
+      src="cognitive-map/index.html" 
+      style="width: 100%; height: 100%; border: none; display: block;" 
+      title="认知地图">
+    </iframe>
+  </div>
+`;
+
   let html = '';
   
   if (content.methods) {
