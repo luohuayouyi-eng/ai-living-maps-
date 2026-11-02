@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a12">
+  <meta name="description" content="AI活地图 · 认知地图：智能设计（AI 辅助的产品与交互设计）下的方法认识、案例分析、成长习惯与反馈建议。">
+  <title>认知地图 · 智能设计（AI 辅助的产品与交互设计）｜AI活地图</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- 全局导航 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="https://ai-living-maps-v2.pages.dev/#/" aria-label="返回 AI活地图主页">
+        <span class="brand-living">LIVING</span>
+        <span class="brand-maps">MAPS</span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a class="nav-link" href="https://ai-living-maps-v2.pages.dev/#/">主页</a>
+        <button class="nav-link" type="button" data-placeholder="领域地图">领域地图</button>
+        <button class="nav-link" type="button" data-placeholder="生态地图">生态地图</button>
+        <a class="nav-link is-active" href="#top" aria-current="page">认知地图</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="dm-app" id="top">
+      <a class="back-btn" href="https://ai-living-maps-v2.pages.dev/#/">← 返回主页</a>
+
+      <!-- 页头 -->
+      <header class="dm-head">
+        <div class="dm-icon" aria-hidden="true">🧠</div>
+        <div class="dm-title-block">
+          <h1>认知地图 · 智能设计（AI 辅助的产品与交互设计）</h1>
+          <p class="dm-sub">我的 AI 领域探索 · 用系统观与发展观持续修正判断</p>
+        </div>
+        <div class="dm-head-meta">
+          <span class="dm-badge">COGNITIVE MODULE</span>
+          <span class="dm-badge dm-badge--active"><i class="status-dot" aria-hidden="true"></i>持续更新 · v0.3</span>
+        </div>
+      </header>
+
+      <div class="dm-intro">
+        <b>这张地图记录什么：</b>围绕团队选题「智能设计：AI 辅助的产品与交互设计」，从系统观与发展观出发，整理我的方法认识、案例判断和团队实践。所有判断保持可修正，并随新的证据继续更新。
+      </div>
+
+      <!-- 项目信息 -->
+      <div class="info-grid" aria-label="项目信息">
+        <div class="info-card">
+          <span class="info-label">团队项目</span>
+          <span class="info-value">AI活地图</span>
+        </div>
+        <div class="info-card">
+          <span class="info-label">团队选题</span>
+          <span class="info-value">智能设计：AI 辅助的产品与交互设计</span>
+        </div>
+        <div class="info-card info-card--warning">
+          <span class="info-label">不声明的事</span>
+          <span class="info-value">本地图不提供法律结论</span>
+        </div>
+      </div>
+
+      <!-- 读图说明 -->
+      <aside class="reading-guide" aria-labelledby="reading-guide-title">
+        <div class="guide-head">
+          <span class="guide-kicker">READING GUIDE / 读图说明</span>
+          <span class="guide-index">00 / BEFORE YOU READ</span>
+        </div>
+        <h2 id="reading-guide-title">怎么读这张图</h2>
+        <p>按照「认识方法 → 分析案例 → 成长习惯 → 反馈修正」的顺序阅读。</p>
+      </aside>
+
+      <!-- 认知节点索引 -->
+      <section class="content-section node-section" id="nodes" aria-labelledby="nodes-title">
+        <div class="section-head">
+          <h2 id="nodes-title">认知节点</h2>
+          <span class="section-code">NODE INDEX / 点击节点查看关联</span>
+        </div>
+        <p class="section-deck">
+          把这张地图拆成可点击的节点。左侧依次是方法层、案例层，以及成长习惯与反馈入口；选择一个节点，右侧会显示它的释义、所属部分与关联判断。
+        </p>
+
+        <div class="node-explorer">
+          <div class="node-left">
+            <div class="tech-card node-map">
+              <div class="node-map-head">
+                <span class="node-map-label">COGNITIVE FIELD / 节点网络</span>
+                <span class="node-map-status"><i aria-hidden="true"></i>LIVE</span>
+              </div>
+
+              <div class="node-layers">
+                <div class="node-layer">
+                  <span class="node-layer-label">
+                    <span>方法层</span>
+                    <small>METHOD</small>
+                  </span>
+                  <div class="node-list">
+                    <button class="node-chip is-active" type="button" data-node="system" data-tone="cyan" aria-pressed="true">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">系统观</span>
+                      <small>SYSTEM</small>
+                    </button>
+                    <button class="node-chip" type="button" data-node="development" data-tone="magenta" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">发展观</span>
+                      <small>DEVELOPMENT</small>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="node-layer">
+                  <span class="node-layer-label">
+                    <span>案例层</span>
+                    <small>CASE</small>
+                  </span>
+                  <div class="node-list">
+                    <button class="node-chip" type="button" data-node="problem" data-tone="orange" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">问题定义</span>
+                      <small>PROBLEM</small>
+                    </button>
+                    <button class="node-chip" type="button" data-node="tradeoff" data-tone="yellow" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">多目标取舍</span>
+                      <small>TRADEOFF</small>
+                    </button>
+                    <button class="node-chip" type="button" data-node="decompose" data-tone="green" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">系统拆解</span>
+                      <small>DECOMPOSE</small>
+                    </button>
+                    <button class="node-chip" type="button" data-node="boundary" data-tone="purple" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">边界检查</span>
+                      <small>BOUNDARY</small>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="node-layer node-layer--extra">
+                  <span class="node-layer-label" aria-hidden="true"></span>
+                  <div class="node-list">
+                    <button class="node-chip" type="button" data-node="habits" data-tone="green" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">成长习惯</span>
+                      <small>HABITS</small>
+                    </button>
+                    <button class="node-chip" type="button" data-node="feedback" data-tone="magenta" aria-pressed="false">
+                      <span class="node-chip-dot" aria-hidden="true"></span>
+                      <span class="node-chip-name">反馈与建议</span>
+                      <small>FEEDBACK</small>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="node-map-foot">
+                <span>选择节点 → 查看释义与关联</span>
+                <span>NODES / 08</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="tech-card node-detail" id="nodeDetail" data-tone="cyan" aria-live="polite">
+            <div class="node-detail-head">
+              <span id="nodeCode">NODE / 01</span>
+              <span id="nodeGroup">方法层 · LENS 01</span>
+            </div>
+            <h3 id="nodeName">系统观</h3>
+            <p class="node-en" id="nodeEn">SYSTEM VIEW</p>
+            <p class="node-text" id="nodeText">
+              数据、模型、交互界面和用户工作流相互影响。只优化模型，可能把成本转移到筛选、修改与协作环节。
+            </p>
+            <div class="node-related">
+              <span class="node-related-label">关联节点</span>
+              <div class="node-related-list" id="nodeRelated"></div>
+            </div>
+            <a class="node-jump" id="nodeJump" href="#methods">
+              <span id="nodeJumpLabel">定位到「认识方法」</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </aside>
+        </div>
+      </section>
+      <!-- 第一部分：认识方法 -->
+      <section class="content-section" id="methods" aria-labelledby="methods-title">
+        <div class="section-head">
+          <h2 id="methods-title">认识方法</h2>
+          <span class="section-code">01 / METHOD · 系统观 × 发展观</span>
+        </div>
+        <p class="section-deck">
+          AI 辅助设计不是一个孤立的工具问题。系统观帮助我看见数据、模型、界面与工作流之间的关系；发展观帮助我理解这些关系如何随时间演化。
+        </p>
+
+        <div class="method-grid">
+          <!-- 系统观 -->
+          <article class="tech-card method-card method-card--cyan">
+            <header class="card-head">
+              <span class="card-kicker">LENS / 01 · SYSTEM VIEW</span>
+              <span class="card-tag">系统观</span>
+            </header>
+
+            <h3>局部最优，不等于整体更好</h3>
+            <p class="card-lede">
+              在 AI 辅助设计中，数据、模型、交互界面和用户工作流彼此定义。把其中一环做到极致，未必能让整个设计过程变好。
+            </p>
+
+            <div class="system-loop" aria-label="AI 辅助设计系统要素">
+              <div class="sys-node">
+                <span class="sys-code">DATA</span>
+                <strong>数据</strong>
+                <small>规范 · 组件 · 场景</small>
+              </div>
+              <span class="sys-arrow" aria-hidden="true">›</span>
+              <div class="sys-node">
+                <span class="sys-code">MODEL</span>
+                <strong>模型</strong>
+                <small>生成 · 评估 · 迭代</small>
+              </div>
+              <span class="sys-arrow" aria-hidden="true">›</span>
+              <div class="sys-node">
+                <span class="sys-code">INTERFACE</span>
+                <strong>交互界面</strong>
+                <small>提示 · 选择 · 编辑</small>
+              </div>
+              <span class="sys-arrow" aria-hidden="true">›</span>
+              <div class="sys-node">
+                <span class="sys-code">WORKFLOW</span>
+                <strong>工作流</strong>
+                <small>调研 · 评审 · 交付</small>
+              </div>
+            </div>
+            <p class="system-loop-note">
+              <span aria-hidden="true">↺</span> 模型输出改变界面上的选择，界面又改变团队的工作流；工作流产生的新数据再回到下一轮生成。
+            </p>
+
+            <ul class="relation-list">
+              <li>
+                <span class="relation-key">数据 → 模型</span>
+                <p>数据决定模型能学到什么。规范、组件和真实场景不足时，模型常用“平均风格”补齐，生成结果看似完整，却可能不适合具体业务。</p>
+              </li>
+              <li>
+                <span class="relation-key">模型 → 界面</span>
+                <p>模型越能一次给出大量候选，界面就越需要解决筛选、比较、编辑和信任问题。否则，生成得越快，设计师的决策负担越重。</p>
+              </li>
+              <li>
+                <span class="relation-key">界面 → 工作流</span>
+                <p>如果界面把“一键生成”设成默认路径，团队可能跳过用户研究和设计评审；节省下来的操作时间，会转化为后期的返工与协调成本。</p>
+              </li>
+            </ul>
+
+            <p class="insight-callout">
+              因此，只优化模型分数或生成速度，并不能保证整体体验改善。真正的设计对象，是数据、模型、界面与工作流共同构成的系统。
+            </p>
+          </article>
+
+          <!-- 发展观 -->
+          <article class="tech-card method-card method-card--magenta">
+            <header class="card-head">
+              <span class="card-kicker">LENS / 02 · DEVELOPMENT VIEW</span>
+              <span class="card-tag">发展观</span>
+            </header>
+
+            <h3>从替代操作，到协同判断</h3>
+            <p class="card-lede">
+              AI 设计工具经历了从局部自动化到生成式辅助，再到协同创作的演进。每一次能力扩展，都会同时解决旧问题、暴露新边界。
+            </p>
+
+            <div class="dev-timeline">
+              <div class="dev-stage">
+                <span class="dev-index">01</span>
+                <div>
+                  <h4>单一功能自动化</h4>
+                  <p>自动对齐、批量替换、图标补全。解决重复操作耗时，但人仍是操作主体，工具并不理解设计任务。</p>
+                </div>
+              </div>
+              <div class="dev-stage">
+                <span class="dev-index">02</span>
+                <div>
+                  <h4>生成式局部辅助</h4>
+                  <p>文生 UI、风格探索、代码草稿。解决从 0 到 1 的候选不足，但结果波动大，评审与筛选成本随之上升。</p>
+                </div>
+              </div>
+              <div class="dev-stage">
+                <span class="dev-index">03</span>
+                <div>
+                  <h4>人机协同创作</h4>
+                  <p>约束生成、多候选、局部锁定、多轮修订。设计师从执行转向定义与判断，但新的责任边界也随之出现。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="boundary-block">
+              <span class="boundary-label">NEW BOUNDARIES / 新限制</span>
+              <div class="boundary-grid">
+                <span>版权与原创性</span>
+                <span>可控与可复现</span>
+                <span>责任归属</span>
+                <span>能力迁移</span>
+              </div>
+              <p>
+                训练来源与生成过程不透明，成果不能默认可商用；随机性带来探索空间，也让规范统一和版本复现更难；当错误发生时，模型、工具设计者与使用者之间的责任需要被重新分配。
+              </p>
+            </div>
+
+            <p class="insight-callout insight-callout--magenta">
+              发展观提醒我：工具升级不是零成本的替代，而是把问题迁移到新的层级。判断一种新方法时，要同时问它解决了什么、又隐藏了什么。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 第二部分：分析案例 -->
+      <section class="content-section" id="cases" aria-labelledby="cases-title">
+        <div class="section-head">
+          <h2 id="cases-title">分析案例</h2>
+          <span class="section-code">02 / CASES · 从问题到判断</span>
+        </div>
+        <p class="section-deck">
+          两个案例使用不同方法，但都沿着同一条判断链展开：具体问题 → 使用的方法 → 依据与比较 → 当前判断。它们分别对应工具设计与边界检查两类问题。
+        </p>
+
+        <!-- 案例 1 -->
+        <article class="tech-card case-card case-card--cyan" aria-labelledby="case-one-title">
+          <span class="case-ghost" aria-hidden="true">01</span>
+          <header class="case-head">
+            <div>
+              <div class="case-meta">
+                <span class="case-label">CASE 01 / TOOL DESIGN</span>
+                <span class="case-divider" aria-hidden="true"></span>
+                <span>设计情境</span>
+              </div>
+              <h3 id="case-one-title">生成速度、规范遵循与用户控制，如何同时成立？</h3>
+              <p class="case-summary">
+                情境：为设计团队构思一款 AI 辅助 UI 生成工具。工具接收需求描述与设计规范，输出可继续编辑的界面草案。
+              </p>
+            </div>
+            <div class="method-tags" aria-label="使用的方法">
+              <span>问题定义</span>
+              <span>多目标取舍</span>
+            </div>
+          </header>
+
+          <div class="case-step-grid">
+            <div class="case-step">
+              <div class="case-step-head">
+                <span class="case-step-no">01</span>
+                <h4>具体问题</h4>
+                <span class="case-step-en">QUESTION</span>
+              </div>
+              <p>只追求一键生成，输出可能偏离组件库和业务约束，设计师也难以判断应该改哪里；若提供过多参数，启动成本又会上升。速度、规范遵循和控制感之间存在直接冲突。</p>
+            </div>
+
+            <div class="case-step">
+              <div class="case-step-head">
+                <span class="case-step-no">02</span>
+                <h4>使用的方法</h4>
+                <span class="case-step-en">METHOD</span>
+              </div>
+              <p>用「问题定义」把目标从“生成更快”改写为“更快形成可持续修改的高质量草案”；再用「多目标取舍」比较一键生成、约束生成与建议式协同三种路径，明确哪些目标不能被牺牲。</p>
+            </div>
+
+            <div class="case-step case-step--wide">
+              <div class="case-step-head">
+                <span class="case-step-no">03</span>
+                <h4>依据与比较</h4>
+                <span class="case-step-en">EVIDENCE &amp; COMPARISON</span>
+              </div>
+              <p>比较维度不是单次生成耗时，而是首版时间、返工成本、规范通过率和主观控制感的综合。</p>
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <caption>三种 AI 辅助 UI 生成策略的比较</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">方案</th>
+                      <th scope="col">收益</th>
+                      <th scope="col">代价</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">一键生成</th>
+                      <td>首版最快，适合发散阶段。</td>
+                      <td>规范遵循不稳定，修改路径不清晰，控制感最低。</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">约束生成</th>
+                      <td>可导入组件库与设计规范，规范通过率更高。</td>
+                      <td>前期配置成本较高，灵活性受到约束。</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">建议式协同</th>
+                      <td>提供候选、理由、局部锁定与回滚，控制感最强。</td>
+                      <td>交互复杂度最高，要求设计师具备更强的判断能力。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="case-step case-step--wide case-step--judgment">
+              <div class="case-step-head">
+                <span class="case-step-no">04</span>
+                <h4>当前判断</h4>
+                <span class="case-step-en">CURRENT JUDGMENT</span>
+              </div>
+              <p>
+                我倾向于采用「约束生成 + 建议式协同」的混合方案：默认在规范约束下生成候选，关键区域允许锁定、替换和回滚，同时保留生成理由与版本记录。生成速度应作为约束条件，而不是唯一优化目标。下一步可用原型对比三组的首版时间、返工次数与设计师主观控制感。
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 案例 2 -->
+        <article class="tech-card case-card case-card--magenta" aria-labelledby="case-two-title">
+          <span class="case-ghost" aria-hidden="true">02</span>
+          <header class="case-head">
+            <div>
+              <div class="case-meta">
+                <span class="case-label">CASE 02 / BOUNDARY CHECK</span>
+                <span class="case-divider" aria-hidden="true"></span>
+                <span>公开案例</span>
+              </div>
+              <h3 id="case-two-title">当生成结果“像”已有作品，失败发生在哪一层？</h3>
+              <p class="case-summary">
+                2024 年 7 月，Figma 的 Make Design 功能被用户指出部分生成结果与 Apple Weather 高度相似；Figma 随后暂时关闭该功能并展开审查。
+              </p>
+            </div>
+            <div class="method-tags" aria-label="使用的方法">
+              <span>系统拆解</span>
+              <span>边界检查</span>
+            </div>
+          </header>
+
+          <div class="case-step-grid">
+            <div class="case-step">
+              <div class="case-step-head">
+                <span class="case-step-no">01</span>
+                <h4>具体问题</h4>
+                <span class="case-step-en">QUESTION</span>
+              </div>
+              <p>生成式 UI 工具把结果直接呈现为“可用”的设计草案，但相似性、来源和原创性边界没有被清楚标出。当生成结果与已有作品高度相似时，团队可能在缺少审查的情况下把它带入交付。</p>
+            </div>
+
+            <div class="case-step">
+              <div class="case-step-head">
+                <span class="case-step-no">02</span>
+                <h4>使用的方法</h4>
+                <span class="case-step-en">METHOD</span>
+              </div>
+              <p>用「系统拆解」把工具拆成数据/参考、模型生成、交互选择、团队工作流四层；再用「边界检查」逐层追问：它能保证什么、不能保证什么，哪些风险必须由流程补上。</p>
+            </div>
+
+            <div class="case-step case-step--wide">
+              <div class="case-step-head">
+                <span class="case-step-no">03</span>
+                <h4>依据与比较</h4>
+                <span class="case-step-en">EVIDENCE &amp; COMPARISON</span>
+              </div>
+              <p>
+                公开报道显示，这一争议不能简单归因于“模型抄了某个作品”。更有解释力的视角是：熟悉的视觉模式在数据与生成过程中被强化，而界面缺少相似性提示，工作流又没有独立的原创性审查。
+              </p>
+
+              <div class="failure-grid" aria-label="失败来源拆解">
+                <div class="failure-item">
+                  <div class="failure-head">
+                    <span>数据 / 参考</span>
+                    <strong class="severity severity--high">高相关</strong>
+                  </div>
+                  <p>相似的参考分布与既有界面，使生成结果更容易靠近熟悉样式。</p>
+                </div>
+                <div class="failure-item">
+                  <div class="failure-head">
+                    <span>模型</span>
+                    <strong class="severity severity--mid">中相关</strong>
+                  </div>
+                  <p>倾向复用高频视觉模式，但不能单凭生成行为判断为直接复制。</p>
+                </div>
+                <div class="failure-item">
+                  <div class="failure-head">
+                    <span>交互</span>
+                    <strong class="severity severity--mid">中相关</strong>
+                  </div>
+                  <p>结果以成品草案出现，缺少相似度与来源提示，用户难以判断边界。</p>
+                </div>
+                <div class="failure-item">
+                  <div class="failure-head">
+                    <span>工作流</span>
+                    <strong class="severity severity--high">高相关</strong>
+                  </div>
+                  <p>没有原创性和法务审查，相似结果可能直接进入交付。</p>
+                </div>
+              </div>
+
+              <p class="comparison-note">
+                与人工参考相比，人工设计同样会借鉴，但通常可以说明参考来源与改编过程；生成系统默认不暴露这种过程。因此，问题不在“是否看了参考”，而在边界是否可见、是否有人负责。
+              </p>
+
+              <p class="case-source">
+                依据来源：
+                <a href="https://www.theverge.com/2024/7/2/24190823/figma-ai-tool-apple-weather-app-copy" target="_blank" rel="noopener noreferrer">The Verge — Figma pulls AI tool after criticism that it ripped off Apple’s design（2024-07-02）</a>
+              </p>
+            </div>
+
+            <div class="case-step case-step--wide case-step--judgment">
+              <div class="case-step-head">
+                <span class="case-step-no">04</span>
+                <h4>当前判断</h4>
+                <span class="case-step-en">CURRENT JUDGMENT</span>
+              </div>
+              <p>
+                这更像是数据/参考、交互提示与工作流的联合失败，而不是单纯的模型能力问题。使用 AI 生成 UI 时，应把输出定义为概念草案：增加来源记录、相似性提示和人工原创性审核，并把“是否可商用”移出工具承诺，交给明确的组织流程。
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 第三部分：成长习惯 -->
+      <section class="content-section" id="habits" aria-labelledby="habits-title">
+        <div class="section-head">
+          <h2 id="habits-title">成长习惯</h2>
+          <span class="section-code">03 / HABITS · 团队实践</span>
+        </div>
+        <p class="section-deck">
+          把方法变成习惯，才能让 AI 真正参与设计，而不是替代判断。以下三条是我们希望在项目中持续保持的实践。
+        </p>
+
+        <div class="habit-grid">
+          <article class="tech-card habit-card habit-card--cyan">
+            <div class="habit-top">
+              <span class="habit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 5.5h16v10H9l-4.5 3.5v-3.5H4v-10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                  <path d="M9.5 9.2a2.3 2.3 0 1 1 3.6 1.9c-.8.5-1.1 1-1.1 1.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  <circle cx="12" cy="15" r=".9" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="habit-index">HABIT / 01</span>
+            </div>
+            <h3>先问用户问题，再选 AI 工具</h3>
+            <p>先确认用户、场景与成功标准，再判断该用生成、检索还是人工分析。工具选择跟随问题，而不是反过来。</p>
+            <div class="habit-foot">
+              <span class="habit-tag">PROBLEM FIRST</span>
+            </div>
+          </article>
+
+          <article class="tech-card habit-card habit-card--magenta">
+            <div class="habit-top">
+              <span class="habit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="5" y="4" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="habit-index">HABIT / 02</span>
+            </div>
+            <h3>保留输入与输出记录</h3>
+            <p>记录提示词、模型版本、参考素材、候选结果和选择理由，让协作过程可复盘、可解释、可追溯。</p>
+            <div class="habit-foot">
+              <span class="habit-tag">TRACEABLE</span>
+            </div>
+          </article>
+
+          <article class="tech-card habit-card habit-card--yellow">
+            <div class="habit-top">
+              <span class="habit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3.5 21 20H3L12 3.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                  <path d="M12 9v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  <circle cx="12" cy="16.5" r=".9" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="habit-index">HABIT / 03</span>
+            </div>
+            <h3>主动寻找反例与边界</h3>
+            <p>持续收集不可落地、偏见、版权争议等反例，检查模型、数据、交互与工作流的边界，并把结论写回流程。</p>
+            <div class="habit-foot">
+              <span class="habit-tag">BOUNDARY CHECK</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- 底部双栏：反馈与更新日志 -->
+      <div class="bottom-grid">
+        <!-- 反馈与建议 -->
+        <section class="content-section feedback-section" id="feedback" aria-labelledby="feedback-title">
+        <div class="section-head">
+          <h2 id="feedback-title">反馈与建议</h2>
+          <span class="section-code">FEEDBACK / 认知更新入口</span>
+        </div>
+        <p class="section-deck">
+          这张地图也需要被反馈修正。欢迎针对具体判断提出问题、反例或补充来源；越具体的反馈，越可能进入下一版。
+        </p>
+
+        <div class="tech-card feedback-shell">
+          <div class="feedback-top">
+            <div class="feedback-copy">
+              <span class="feedback-kicker">FEEDBACK LOOP / 你的反例</span>
+              <h3>你的反例，会进入下一版地图。</h3>
+              <p>
+                如果某个判断、案例或表达有遗漏，请具体指出所在卡片与理由。比起“感觉不对”，更希望收到可验证的反例或来源。
+              </p>
+              <div class="feedback-points" aria-label="反馈建议">
+                <span>指出具体判断</span>
+                <span>补充证据来源</span>
+                <span>提出反例</span>
+              </div>
+            </div>
+
+            <form class="feedback-form" id="feedbackForm">
+              <div class="form-head">
+                <span>WRITE BACK / 写一条反馈</span>
+                <span>匿名提交</span>
+              </div>
+              <div class="field">
+                <label for="feedbackContent">反馈内容</label>
+                <textarea id="feedbackContent" name="content" rows="4" maxlength="500" placeholder="例如：案例 1 的取舍还应补充…" required></textarea>
+              </div>
+              <div class="feedback-actions">
+                <span class="feedback-note">匿名反馈，仅保存在当前浏览器。</span>
+                <button class="submit-btn" type="submit">提交反馈 <span aria-hidden="true">↗</span></button>
+              </div>
+              <p class="form-status" id="feedbackStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="feedback-list-wrap">
+            <div class="feedback-list-head">
+              <span>最新反馈 / RECENT</span>
+              <span id="feedbackCount">0 条</span>
+            </div>
+            <div class="feedback-list" id="feedbackList" aria-live="polite">
+              <p class="feedback-empty">暂无反馈，欢迎留下第一条建议。</p>
+            </div>
+          </div>
+        </div>
+        </section>
+
+        <!-- 更新日志 -->
+        <section class="content-section changelog-section" id="changelog" aria-labelledby="changelog-title">
+          <div class="section-head">
+            <h2 id="changelog-title">更新日志</h2>
+            <span class="section-code">CHANGELOG / 版本记录</span>
+          </div>
+          <p class="section-deck">
+            记录可追溯的结构与内容更新。
+          </p>
+
+          <div class="tech-card changelog-shell">
+            <div class="changelog-head">
+              <span class="changelog-label">VERSION TRACE / 版本轨迹</span>
+              <span class="changelog-current">v0.3</span>
+            </div>
+
+            <ol class="changelog-list">
+              <li class="changelog-item is-current">
+                <div class="changelog-meta">
+                  <span class="changelog-version">v0.3</span>
+                  <span class="changelog-latest">LATEST</span>
+                </div>
+                <h3>内容与结构更新</h3>
+                <p>补充认识方法、分析案例与成长习惯；新增 8 个认知节点，并重整匿名反馈与更新日志。</p>
+              </li>
+              <li class="changelog-item">
+                <div class="changelog-meta">
+                  <span class="changelog-version">v0.2</span>
+                </div>
+                <h3>节点与反馈上线</h3>
+                <p>建立认知节点索引、关联详情、页面跳转与匿名反馈记录。</p>
+              </li>
+              <li class="changelog-item">
+                <div class="changelog-meta">
+                  <span class="changelog-version">v0.1</span>
+                </div>
+                <h3>页面初版</h3>
+                <p>建立认知地图的页面结构、全站导航与深色科技视觉。</p>
+              </li>
+            </ol>
+
+            <div class="changelog-foot">
+              <span>持续修订</span>
+              <span>UPDATED / 2026-11-01</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- 全局状态栏 -->
+  <footer class="site-footer">
+    <p><span class="status-dot" aria-hidden="true"></span>SYSTEM ONLINE · AI/智能设计领域认知框架 v1.0</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      /* 其他地图的占位提示 */
+      const toast = document.getElementById('toast');
+      let toastTimer = null;
+
+      document.querySelectorAll('[data-placeholder]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          const mapName = button.getAttribute('data-placeholder') || '该地图';
+          toast.textContent = mapName + '由其他同学负责，内容暂未接入。';
+          toast.classList.add('is-visible');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () {
+            toast.classList.remove('is-visible');
+          }, 2400);
+        });
+      });
+
+      /* 认知节点互动 */
+      const nodeData = {
+        system: {
+          code: 'NODE / 01',
+          group: '方法层 · LENS 01',
+          name: '系统观',
+          en: 'SYSTEM VIEW',
+          tone: 'cyan',
+          text: '数据、模型、交互界面和用户工作流相互影响。只优化模型，可能把成本转移到筛选、修改与协作环节。',
+          related: ['development', 'problem'],
+          target: '#methods',
+          targetLabel: '认识方法'
+        },
+        development: {
+          code: 'NODE / 02',
+          group: '方法层 · LENS 02',
+          name: '发展观',
+          en: 'DEVELOPMENT VIEW',
+          tone: 'magenta',
+          text: 'AI 设计工具从单一功能自动化演进到人机协同创作。新能力扩展的同时，也引入版权、可控性、责任归属等新限制。',
+          related: ['system', 'boundary'],
+          target: '#methods',
+          targetLabel: '认识方法'
+        },
+        problem: {
+          code: 'NODE / 03',
+          group: '案例层 · CASE 01',
+          name: '问题定义',
+          en: 'PROBLEM DEFINITION',
+          tone: 'orange',
+          text: '把“生成更快”改写为“更快形成可修改的高质量草案”，先明确用户、任务阶段和成功标准，再讨论工具。',
+          related: ['tradeoff', 'system'],
+          target: '#cases',
+          targetLabel: '分析案例'
+        },
+        tradeoff: {
+          code: 'NODE / 04',
+          group: '案例层 · CASE 01',
+          name: '多目标取舍',
+          en: 'MULTI-OBJECTIVE TRADEOFF',
+          tone: 'yellow',
+          text: '用首版时间、返工成本、规范通过率与主观控制感的综合成本来比较方案，而不是只优化单次生成速度。',
+          related: ['problem', 'boundary'],
+          target: '#cases',
+          targetLabel: '分析案例'
+        },
+        decompose: {
+          code: 'NODE / 05',
+          group: '案例层 · CASE 02',
+          name: '系统拆解',
+          en: 'SYSTEM DECOMPOSITION',
+          tone: 'green',
+          text: '把生成工具拆成数据/参考、模型生成、交互选择与团队工作流四层，避免把系统性问题误判为单一模型问题。',
+          related: ['boundary', 'development'],
+          target: '#cases',
+          targetLabel: '分析案例'
+        },
+        boundary: {
+          code: 'NODE / 06',
+          group: '案例层 · CASE 02',
+          name: '边界检查',
+          en: 'BOUNDARY CHECK',
+          tone: 'purple',
+          text: '明确工具无法保证的事：原创性、版权合规与品牌适配必须由来源记录、相似性提示和人工审查补足。',
+          related: ['decompose', 'development'],
+          target: '#cases',
+          targetLabel: '分析案例'
+        },
+        habits: {
+          code: 'NODE / 07',
+          group: '实践层 · HABITS',
+          name: '成长习惯',
+          en: 'GROWTH HABITS',
+          tone: 'green',
+          text: '先问用户问题，再选 AI 工具；保留输入与输出记录；主动寻找反例与边界。把方法变成可复用的团队习惯。',
+          related: ['boundary', 'feedback'],
+          target: '#habits',
+          targetLabel: '成长习惯'
+        },
+        feedback: {
+          code: 'NODE / 08',
+          group: '实践层 · FEEDBACK',
+          name: '反馈与建议',
+          en: 'FEEDBACK LOOP',
+          tone: 'magenta',
+          text: '通过具体反例、来源与判断修正，让这张认知地图持续更新，而不是停在一次结论里。',
+          related: ['habits', 'boundary'],
+          target: '#feedback',
+          targetLabel: '反馈与建议'
+        }
+      };
+
+      const nodeSection = document.querySelector('.node-section');
+      const nodeDetail = document.getElementById('nodeDetail');
+      const nodeCode = document.getElementById('nodeCode');
+      const nodeGroup = document.getElementById('nodeGroup');
+      const nodeName = document.getElementById('nodeName');
+      const nodeEn = document.getElementById('nodeEn');
+      const nodeText = document.getElementById('nodeText');
+      const nodeRelated = document.getElementById('nodeRelated');
+      const nodeJump = document.getElementById('nodeJump');
+      const nodeJumpLabel = document.getElementById('nodeJumpLabel');
+      const nodeButtons = document.querySelectorAll('.node-chip');
+
+      function renderNode(key, userInitiated) {
+        const node = nodeData[key];
+        if (!node) return;
+
+        nodeDetail.dataset.tone = node.tone;
+        nodeCode.textContent = node.code;
+        nodeGroup.textContent = node.group;
+        nodeName.textContent = node.name;
+        nodeEn.textContent = node.en;
+        nodeText.textContent = node.text;
+        nodeJump.href = node.target;
+        nodeJumpLabel.textContent = '定位到「' + node.targetLabel + '」';
+
+        nodeButtons.forEach(function (button) {
+          const selected = button.dataset.node === key;
+          button.classList.toggle('is-active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+
+        nodeRelated.textContent = '';
+        node.related.forEach(function (relatedKey) {
+          const relatedNode = nodeData[relatedKey];
+          if (!relatedNode) return;
+          const relatedButton = document.createElement('button');
+          relatedButton.className = 'node-related-chip';
+          relatedButton.type = 'button';
+          relatedButton.dataset.node = relatedKey;
+          relatedButton.dataset.tone = relatedNode.tone;
+          relatedButton.textContent = relatedNode.name;
+          nodeRelated.appendChild(relatedButton);
+        });
+
+        nodeDetail.classList.remove('is-updated');
+        void nodeDetail.offsetWidth;
+        nodeDetail.classList.add('is-updated');
+
+        if (userInitiated && window.matchMedia('(max-width: 1080px)').matches) {
+          nodeDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      if (nodeSection) {
+        nodeSection.addEventListener('click', function (event) {
+          const button = event.target.closest('[data-node]');
+          if (!button || !nodeSection.contains(button)) return;
+          renderNode(button.dataset.node, true);
+        });
+        renderNode('system', false);
+      }
+
+      /* 本地反馈 */
+      const STORAGE_KEY = 'aiLivingMapsCognitiveFeedback';
+      const form = document.getElementById('feedbackForm');
+      const contentInput = document.getElementById('feedbackContent');
+      const status = document.getElementById('feedbackStatus');
+      const list = document.getElementById('feedbackList');
+      const count = document.getElementById('feedbackCount');
+
+      function readFeedback() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveFeedback(items) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      function formatTime(value) {
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return '';
+        return date.toLocaleString('zh-CN', {
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+
+      function renderFeedback() {
+        const items = readFeedback();
+        list.textContent = '';
+        count.textContent = items.length + ' 条';
+
+        if (items.length === 0) {
+          const empty = document.createElement('p');
+          empty.className = 'feedback-empty';
+          empty.textContent = '暂无反馈，欢迎留下第一条建议。';
+          list.appendChild(empty);
+          return;
+        }
+
+        items.forEach(function (item) {
+          const article = document.createElement('article');
+          article.className = 'feedback-item';
+
+          const head = document.createElement('div');
+          head.className = 'feedback-item-head';
+
+          const author = document.createElement('span');
+          author.className = 'feedback-author';
+          author.textContent = '匿名反馈';
+
+          const time = document.createElement('time');
+          time.className = 'feedback-time';
+          time.dateTime = item.createdAt || '';
+          time.textContent = formatTime(item.createdAt);
+
+          const text = document.createElement('p');
+          text.textContent = item.content || '';
+
+          head.appendChild(author);
+          head.appendChild(time);
+          article.appendChild(head);
+          article.appendChild(text);
+          list.appendChild(article);
+        });
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const content = contentInput.value.trim();
+
+        if (!content) {
+          status.textContent = '请填写反馈内容。';
+          status.className = 'form-status is-error';
+          return;
+        }
+
+        const items = readFeedback();
+        items.unshift({
+          content: content,
+          createdAt: new Date().toISOString()
+        });
+
+        if (saveFeedback(items.slice(0, 50))) {
+          form.reset();
+          renderFeedback();
+          status.textContent = '反馈已保存，感谢你的补充。';
+          status.className = 'form-status is-success';
+        } else {
+          status.textContent = '当前浏览器未允许本地存储，暂时无法保存反馈。';
+          status.className = 'form-status is-error';
+        }
+      });
+
+      renderFeedback();
+    })();
+  </script>
+</body>
+</html>
