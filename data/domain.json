@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "id": "domain",
+    "version": "v2.0",
+    "updated": "2026-10-29",
+    "domain": "智能设计（AI 辅助的产品与交互设计）",
+    "orientation": "AI 设计师取向（兼顾工程师视角的实现可行性）",
+    "oneLineGoal": "帮助同学理解：在“AI 辅助设计”中，哪些环节被 AI 加速了，哪些判断仍必须由人做出，以及每个环节需要什么知识、工具与课程。",
+    "boundary": {
+      "weStudy": "以「为校园二手交易平台设计移动端首页」为典型任务，覆盖从用户研究到可交互原型的完整链路，以及背后的生成模型原理。",
+      "typicalTask": "用户研究 → 问题定义 → 概念发散（3 个视觉方向）→ 结构先行（线框 + 布局约束）→ 风格控制（LoRA/参考图）→ 可交互原型 → 可用性走查与 SUS 评分。",
+      "notCovered": "模型训练的数学推导、从零训练大模型、3D 打印与可制造性细节、商业变现模式。",
+      "notClaim": "本地图不提供法律结论；版权与署名问题只记录信息线索，标注为待核实。"
+    },
+    "howToRead": "五个分层从上到下是「问题 → 概念 → 方法 → 工具 → 资源」的支撑关系：每一层都在回答下一层“为什么需要它”。点击任意节点查看它的任务、前置知识、对应课程、局限与来源；所有课程均对照浙江大学 2019 级工业设计专业培养方案（课程号可在课程视图中核对）。",
+    "levels": {
+      "已初步理解": "能够解释基本作用和主要关系",
+      "已经尝试": "完成过一个实际任务或简单示例",
+      "待深入学习": "知道其位置和价值，但尚未掌握细节"
+    },
+    "statusMeaning": {
+      "已核实": "内容可回溯到来源清单中的原始材料（2026-10-29 检索）",
+      "待核实": "有明确线索但尚未完成核对，引用时请注意",
+      "团队推断": "团队基于实践的分析判断，欢迎在留言区挑战"
+    }
+  },
+  "taskflow": {
+    "task": "典型任务：为校园二手交易平台设计移动端首页",
+    "note": "选择它的理由：人人用过二手交易（问题真实可访谈）、规模小到 7 周内能完成、又覆盖生成式 AI 在设计中的全部关键环节。",
+    "steps": [
+      {
+        "n": 1, "name": "需求理解", "goal": "把“不好用”变成有证据的痛点清单",
+        "do": ["半结构化访谈 8 名同学（3 卖 / 4 买 / 1 两者）", "要点便签化做亲和图聚类", "AI 辅助转写与初步归类，逐条回溯原话"],
+        "tools": ["m-research"], "concepts": ["c-dtwin", "p-need"],
+        "output": "痛点清单 + 用户旅程图", "pitfall": "让 AI 替用户“总结观点”，丢失原始引语",
+        "courses": ["design-think", "psych"]
+      },
+      {
+        "n": 2, "name": "问题定义", "goal": "收敛成一条值得做的 HMW",
+        "do": ["从痛点中挑 1–2 条写成 How Might We", "检查是否偷塞了解法", "为选定问题写验收标准"],
+        "tools": ["m-define"], "concepts": ["c-dtwin"],
+        "output": "问题陈述 + 验收标准", "pitfall": "HMW 写得太宽，发散失去方向",
+        "courses": ["design-think", "service"]
+      },
+      {
+        "n": 3, "name": "概念发散", "goal": "产出 3 个有真实差异的视觉方向",
+        "do": ["固定任务与约束，只变风格轴", "Midjourney / SD 批量生成 3×3 变体", "并排比较并写选择理由"],
+        "tools": ["m-diverge", "t-mj", "t-sd"], "concepts": ["c-diffusion", "c-homogen"],
+        "output": "3 个方向的概念板", "pitfall": "把“生成数量”当成“探索广度”（假发散）",
+        "courses": ["design-base", "shape"]
+      },
+      {
+        "n": 4, "name": "结构先行", "goal": "先定信息架构，再谈好看",
+        "do": ["画首页线框（栏目/层级/操作流）", "用布局条件控制或组件约束生成视觉稿", "对照设计规范检查"],
+        "tools": ["m-structure", "t-cn", "t-figma", "t-v0"], "concepts": ["c-cond", "c-afford"],
+        "output": "线框图 + 符合布局的视觉稿", "pitfall": "被“好看的错误布局”带跑，回头返工",
+        "courses": ["interact", "cad"]
+      },
+      {
+        "n": 5, "name": "风格控制与个性化", "goal": "让系列产出长在团队自己的风格里",
+        "do": ["整理 30 张风格参考样本", "训练/挂载风格 LoRA 或用参考图控制", "A/B 对比通用模型 vs 自建风格"],
+        "tools": ["m-style", "t-lora"], "concepts": ["c-consist", "c-homogen"],
+        "output": "风格一致的全套页面视觉", "pitfall": "训练数据脏，学到脏风格",
+        "courses": ["ai", "mlapp"]
+      },
+      {
+        "n": 6, "name": "原型落地与体验评价", "goal": "能点的原型 + 有证据的判断",
+        "do": ["v0/代理生成可交互页面并部署", "5 人任务走查 + SUS 问卷", "问题分级回填，记录版本"],
+        "tools": ["t-v0", "t-code", "m-eval"], "concepts": ["c-heur", "p-eval", "p-fidelity"],
+        "output": "公开可访问的原型 + 可用性报告", "pitfall": "只改自己看到的问题，忽略走查中提到的长尾问题",
+        "courses": ["ux", "ergo", "game"]
+      }
+    ]
+  },
+  "curriculum": {
+    "basis": "浙江大学 2019 级工业设计专业培养方案（课程号与建议学期均摘自原文，见来源 s-zju）",
+    "basisUrl": "refs/s-zju 培养方案 PDF（来源清单可查）",
+    "note": "覆盖程度含义：前置基础 = 学它才能懂原理；核心覆盖 = 课程直接讲授该内容；部分涉及 = 在项目/案例中出现；实践应用 = 在实践环节使用；自主拓展 = 培养方案之外需自学。未来专业课程是学习入口，不能被当成先修要求。",
+    "orientation": "主要取向：AI 设计师（对照培养要求 1/2/4/5/7 条）；工程师与科学家取向的课程映射见备注。",
+    "chains": [
+      {
+        "req": "培养要求 1：坚实的产品创新设计技能与设计科学基础",
+        "ability": "能独立完成“研究→定义→发散→收敛”的完整设计流程",
+        "courses": ["design-base 设计基础 211D0100 一(春夏)", "design-think 设计思维与表达 21191511 二(秋冬)"],
+        "nodes": ["c-dtwin", "m-research", "m-define"],
+        "next": "整合与创新设计 21191503（四秋冬）+ 本课程典型任务",
+        "coverage": "核心覆盖", "basis": "培养方案专业基础课程列表（原文）"
+      },
+      {
+        "req": "培养要求 4：整合用户、设计、技术、商业与文化创造新产品与服务",
+        "ability": "能把 AI 能力嵌入产品交互并说明设计取舍",
+        "courses": ["interact 信息与交互设计技术 21121390 三(春夏)", "infoprod 信息产品设计 21121092 三(春夏)"],
+        "nodes": ["c-collab", "m-structure", "m-system", "t-figma", "t-v0"],
+        "next": "毕业设计（21189030）：完整落地一次人机协同设计",
+        "coverage": "核心覆盖", "basis": "培养方案专业必修课程列表（原文）"
+      },
+      {
+        "req": "培养要求 2：系统掌握本专业基本理论与知识",
+        "ability": "能向同学解释生成式模型“为什么能生成、为什么不可控”",
+        "courses": ["ai 人工智能 21191890 二(秋冬)（专业选修）", "mlapp 机器学习及应用 21191900 二(夏)（专业选修）"],
+        "nodes": ["c-diffusion", "c-latent", "c-cond", "c-align"],
+        "next": "自主拓展：diffusers 实践 + arXiv cs.GR 论文追踪",
+        "coverage": "部分涉及", "basis": "培养方案专业选修课程列表（原文）；课程内是否讲授扩散模型待核实"
+      },
+      {
+        "req": "培养要求 4：较强的工程实践能力",
+        "ability": "能把设计意图推进为可运行、可访问的站点",
+        "courses": ["game 计算机游戏程序设计 21190912 二(秋冬)", "python Python 程序设计 211G0200 一(春夏)", "cad 计算机辅助工业设计 21120161 一(短)"],
+        "nodes": ["t-code", "t-v0", "r-gpu"],
+        "next": "本课程的 Vibe Coding 工作流：需求规格 → 最小原型 → 测试迭代",
+        "coverage": "实践应用", "basis": "培养方案通识/必修/实践环节课程列表（原文）"
+      },
+      {
+        "req": "培养要求 7：系统了解产品使用中的审美要求与文化内涵",
+        "ability": "能判断生成结果的审美趋同风险并建立团队风格",
+        "courses": ["shape 造型基础 21120350 二(春)", "hist 工业设计史 21120130 二(秋)（选修）", "culture 文化构成与创新设计 21120942 三(冬)（选修）"],
+        "nodes": ["c-homogen", "m-style", "c-consist"],
+        "next": "自建风格 LoRA；作品集署名与来源声明",
+        "coverage": "部分涉及", "basis": "培养方案专业必修/选修课程列表（原文）"
+      },
+      {
+        "req": "培养要求 5/6：创造性思维与全程设计管理能力",
+        "ability": "能用证据而非直觉评价体验质量并管理迭代",
+        "courses": ["ux 用户体验与产品创新设计 21121201 三(冬)", "ergo 人机工程学与创新设计 21120243 二(夏)", "bizdata 商业数据分析 21121250 三(冬)（选修）"],
+        "nodes": ["m-eval", "m-metric", "c-heur", "p-eval"],
+        "next": "为原型建立持续走查机制（每周一次，呼应作业第九部分）",
+        "coverage": "核心覆盖", "basis": "培养方案专业必修课程列表（原文）"
+      },
+      {
+        "req": "数理与计算通识基础",
+        "ability": "能读懂扩散模型/潜空间的基本描述，与工程师有效对话",
+        "courses": ["calc1 微积分（甲）Ⅰ 821T0150 一(秋冬)", "linalg 线性代数（甲）821T0190 一(秋冬)", "cs-basic 计算机科学基础（A）211G0290 一(秋冬)"],
+        "nodes": ["c-diffusion", "c-latent", "c-align"],
+        "next": "若取工程师取向：对照计算机科学与技术培养方案补深度学习/计算机视觉（课程号待核实）",
+        "coverage": "前置基础", "basis": "培养方案自然科学通识与计算机类通识列表（原文）"
+      }
+    ],
+    "engineerNote": "工程师取向补充（待核实）：机器学习、深度学习、计算机视觉、人机交互等课程在计算机科学与技术/人工智能专业培养方案中的课程号与学期，本组尚未逐项核对，引用前请以最新版培养方案为准。"
+  },
+  "relationGroups": [
+    {
+      "name": "技术路线：谁替代谁、谁依赖谁",
+      "edges": [
+        { "from": "t-sd", "rel": "依赖", "to": "c-diffusion", "note": "Stable Diffusion 是潜扩散模型的工程实现", "basis": "LDM 论文 s-ldm" },
+        { "from": "t-sd", "rel": "依赖", "to": "r-laion", "note": "训练数据来自 LAION 大规模图文对", "basis": "LAION-5B 博客 s-laion" },
+        { "from": "t-cn", "rel": "扩展", "to": "t-sd", "note": "以可插拔分支为 SD 提供结构条件控制", "basis": "ControlNet 论文 s-cn" },
+        { "from": "t-lora", "rel": "扩展", "to": "t-sd", "note": "低秩增量权重挂载，实现风格/角色固定", "basis": "LoRA 论文 s-lora" },
+        { "from": "t-mj", "rel": "替代", "to": "t-sd", "note": "托管式 vs 自部署：易用性换控制力（二者在概念发散环节互为替代）", "basis": "团队使用对比（认知地图·对照比较）" },
+        { "from": "t-dalle", "rel": "并列", "to": "t-mj", "note": "同为闭源托管入口，对话式改写提示词降低门槛", "basis": "官方文档 s-openai / s-mj" },
+        { "from": "c-diffusion", "rel": "演进替代", "to": "c-align", "note": "扩散模型在图像质量上超越 GAN，成为当前主流生成范式", "basis": "Diffusion Beat GANs s-beat；GAN s-gan" }
+      ]
+    },
+    {
+      "name": "方法论：流程里的接力关系",
+      "edges": [
+        { "from": "m-research", "rel": "输出到", "to": "m-define", "note": "痛点清单是 HMW 的原料", "basis": "双钻模型 s-dc" },
+        { "from": "m-define", "rel": "输出到", "to": "m-diverge", "note": "问题陈述定义发散的方向", "basis": "双钻模型 s-dc" },
+        { "from": "m-diverge", "rel": "输出到", "to": "m-structure", "note": "选中的方向进入结构化", "basis": "团队工作流记录" },
+        { "from": "m-structure", "rel": "依赖", "to": "c-cond", "note": "布局约束靠条件控制技术实现", "basis": "ControlNet s-cn" },
+        { "from": "m-structure", "rel": "配合", "to": "m-system", "note": "骨架定义与组件沉淀互补", "basis": "Material 3 / HIG s-m3 s-hig" },
+        { "from": "m-style", "rel": "依赖", "to": "t-lora", "note": "自建风格靠小样本微调实现", "basis": "LoRA s-lora" },
+        { "from": "m-eval", "rel": "互补", "to": "m-metric", "note": "人工评估定案、自动指标初筛", "basis": "NN/g s-nng；GenEval s-geneval" }
+      ]
+    },
+    {
+      "name": "评价关系：三种证据各管一段",
+      "edges": [
+        { "from": "r-metric", "rel": "初筛", "to": "r-bench", "note": "FID/CLIPScore 快而粗，基准更细", "basis": "s-fid s-geneval" },
+        { "from": "r-bench", "rel": "补充", "to": "m-eval", "note": "基准分数不等于本任务表现，最终由真实用户任务定案", "basis": "NN/g s-nng；SUS s-brooke" },
+        { "from": "c-heur", "rel": "先行", "to": "m-eval", "note": "专家走查在测试前拦住明显问题", "basis": "十大可用性原则 s-nng" }
+      ]
+    }
+  ],
+  "crossMap": [
+    { "domainNode": "c-diffusion 扩散模型", "ecosystem": "Stability AI（开源发布 SD）、LAION（训练数据）", "cognitive": "演进分析：GAN→扩散的能力迁移与成立条件变化" },
+    { "domainNode": "m-eval 可用性评估", "ecosystem": "CHI（CCF-A 人机交互，评估方法集中地）", "cognitive": "反例与边界检查：什么情况下走查结论不成立" },
+    { "domainNode": "t-mj / t-sd 工具选型", "ecosystem": "Stability AI vs OpenAI 的开源/闭源竞争", "cognitive": "对照比较：可控性/成本/质量四维对比案例" },
+    { "domainNode": "c-homogen 审美趋同", "ecosystem": "LAION 数据争议、Hugging Face 开源生态", "cognitive": "反例与边界检查：趋同是否随模型规模变化" },
+    { "domainNode": "p-rights 权属与署名", "ecosystem": "LAION（数据授权）、Firefly（合规策略）", "cognitive": "认识更新：从“能用就行”到“来源要能回溯”" }
+  ],
+  "sources": [
+    { "id": "s-zju", "title": "浙江大学 2019 级工业设计专业培养方案（PDF）", "pub": "浙江大学本科生院", "url": "https://ugrs.zju.edu.cn/_upload/article/files/e8/80/de041f64470281478a9367d8ab7f/3ce0859e-444e-43a9-a5be-c3a084b0e69f.pdf", "date": "2019 级适用", "checked": "2026-10-29 全文下载核读，课程号/学期摘自原文", "status": "已核实" },
+    { "id": "s-ddpm", "title": "Denoising Diffusion Probabilistic Models", "pub": "Ho et al., arXiv:2006.11239", "url": "https://arxiv.org/abs/2006.11239", "date": "2020", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-ldm", "title": "High-Resolution Image Synthesis with Latent Diffusion Models（Stable Diffusion 的论文）", "pub": "Rombach et al., arXiv:2112.10752", "url": "https://arxiv.org/abs/2112.10752", "date": "2022", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-cn", "title": "Adding Conditional Control to Text-to-Image Diffusion Models（ControlNet）", "pub": "Zhang et al., arXiv:2302.05543", "url": "https://arxiv.org/abs/2302.05543", "date": "2023", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-lora", "title": "LoRA: Low-Rank Adaptation of Large Language Models", "pub": "Hu et al., arXiv:2106.09685", "url": "https://arxiv.org/abs/2106.09685", "date": "2021", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-clip", "title": "Learning Transferable Visual Models From Natural Language Supervision（CLIP）", "pub": "Radford et al., arXiv:2103.00020", "url": "https://arxiv.org/abs/2103.00020", "date": "2021", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-gan", "title": "Generative Adversarial Networks", "pub": "Goodfellow et al., arXiv:1406.2661", "url": "https://arxiv.org/abs/1406.2661", "date": "2014", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-beat", "title": "Diffusion Models Beat GANs on Image Synthesis", "pub": "Dhariwal & Nichol, arXiv:2105.05233", "url": "https://arxiv.org/abs/2105.05233", "date": "2021", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-hps", "title": "Human Preference Score v2（HPSv2）", "pub": "Wu et al., arXiv:2306.09341", "url": "https://arxiv.org/abs/2306.09341", "date": "2023", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-geneval", "title": "GenEval: An Object-Focused Framework for Evaluating Text-to-Image Alignment", "pub": "Hu et al., arXiv:2310.11513", "url": "https://arxiv.org/abs/2310.11513", "date": "2023", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-t2i", "title": "T2I-CompBench++: compositional text-to-image benchmark", "pub": "Huang et al., arXiv:2307.06350", "url": "https://arxiv.org/abs/2307.06350", "date": "2023/2025 修订", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-fid", "title": "FID（Fréchet Inception Distance）", "pub": "Heusel et al., arXiv:1706.08500", "url": "https://arxiv.org/abs/1706.08500", "date": "2017", "checked": "2026-10-29 标题核验", "status": "已核实" },
+    { "id": "s-nng", "title": "10 Usability Heuristics for User Interface Design", "pub": "Nielsen Norman Group", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/", "date": "1994/持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-brooke", "title": "SUS: A 'Quick and Dirty' Usability Scale（电子版链接待补）", "pub": "Brooke, J., 1996", "url": "", "date": "1996", "checked": "经典文献，电子版链接尚未核实", "status": "待核实" },
+    { "id": "s-dc", "title": "The Double Diamond（双钻模型）", "pub": "Design Council (UK)", "url": "https://www.designcouncil.org.uk/", "date": "2005/2019 修订", "checked": "2026-10-29 主站可访问，具体框架页超时待复核", "status": "待核实" },
+    { "id": "s-mj", "title": "Midjourney 官方文档", "pub": "Midjourney", "url": "https://docs.midjourney.com/", "date": "持续更新", "checked": "本组网络环境访问超时，待换网络复核", "status": "待核实" },
+    { "id": "s-sd", "title": "Stability AI 官网与 Stable Diffusion 发布页", "pub": "Stability AI", "url": "https://stability.ai/", "date": "2022 发布", "checked": "基于 LDM 论文交叉印证", "status": "已核实" },
+    { "id": "s-comfy", "title": "ComfyUI 开源仓库", "pub": "comfyanonymous (GitHub)", "url": "https://github.com/comfyanonymous/ComfyUI", "date": "2023 起", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-figma", "title": "Figma AI 官方页面", "pub": "Figma", "url": "https://www.figma.com/ai/", "date": "持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-v0", "title": "v0 官网", "pub": "Vercel", "url": "https://v0.dev/", "date": "持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-openai", "title": "OpenAI 图像生成文档", "pub": "OpenAI", "url": "https://platform.openai.com/docs/guides/image-generation", "date": "持续更新", "checked": "2026-10-29 返回 403（反爬），待换环境复核", "status": "待核实" },
+    { "id": "s-firefly", "title": "Adobe Firefly 官方页面", "pub": "Adobe", "url": "https://www.adobe.com/products/firefly.html", "date": "持续更新", "checked": "2026-10-29 返回 403（反爬），待换环境复核", "status": "待核实" },
+    { "id": "s-cursor", "title": "Cursor 官网", "pub": "Anysphere", "url": "https://cursor.com/", "date": "持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-laion", "title": "LAION-5B: An open large-scale dataset", "pub": "LAION", "url": "https://laion.ai/blog/laion-5b/", "date": "2022", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-hf", "title": "Hugging Face diffusers 文档", "pub": "Hugging Face", "url": "https://huggingface.co/docs/diffusers", "date": "持续更新", "checked": "本组网络访问超时，待换网络复核", "status": "待核实" },
+    { "id": "s-ccf", "title": "中国计算机学会（CCF）推荐国际学术会议和期刊目录", "pub": "中国计算机学会", "url": "https://www.ccf.org.cn/Academic_Evaluation/By_category/", "date": "目录版本需注明（本组引用处标注待核实）", "checked": "2026-10-29 入口可访问，具体类别归属待逐项核对", "status": "待核实" },
+    { "id": "s-m3", "title": "Material Design 3 指南", "pub": "Google", "url": "https://m3.material.io/", "date": "2021 起", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-hig", "title": "Apple Human Interface Guidelines", "pub": "Apple", "url": "https://developer.apple.com/design/human-interface-guidelines/", "date": "持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-rhino", "title": "Rhino 3D 官网", "pub": "Robert McNeel & Associates", "url": "https://www.rhino3d.com/", "date": "持续更新", "checked": "2026-10-29 链接可访问", "status": "已核实" },
+    { "id": "s-arxiv", "title": "arXiv 预印本平台（cs.GR / cs.CV / cs.HC）", "pub": "Cornell University", "url": "https://arxiv.org/", "date": "持续更新", "checked": "2026-10-29 多篇论文标题核验通过", "status": "已核实" }
+  ],
+  "updates": [
+    {
+      "date": "2026-10-29",
+      "object": "领域地图整体（v1.0 → v2.0）",
+      "basis": "课程大作业第四部分「领域地图」要求 + 提交前自查清单",
+      "change": "从 4 个栏目式清单重构为「问题/概念/方法/工具/资源」五层节点库（41 节点）+ 典型任务流 + 课程链条；每个节点补充任务关联、前置知识、局限、替代方案与来源",
+      "reason": "自检发现 v1.0 是“概念清单 + 软件清单”两张清单的拼接，不满足“把知识与工具连接起来”的要求",
+      "by": "本组"
+    },
+    {
+      "date": "2026-10-29",
+      "object": "课程关联视图",
+      "basis": "浙江大学 2019 级工业设计专业培养方案原文（s-zju）",
+      "change": "用真实课程号与建议学期替换 v1.0 中的泛化课名；为每条关联标注覆盖程度与依据；无法确认处标注“待核实”",
+      "reason": "作业要求课程关联以培养方案/大纲为依据，不能只凭课名猜测",
+      "by": "本组"
+    },
+    {
+      "date": "2026-10-29",
+      "object": "来源与核实状态体系",
+      "basis": "作业第十二部分「信息与 AI 使用」规范",
+      "change": "为全部关键内容增加来源清单（29 条），区分“事实 / 他人观点 / 团队推断”，对无法核实的条目显式标注待核实（如 Hugging Face 链接在本组网络超时）",
+      "reason": "重要内容必须可追溯；不确定的内容必须明确标注",
+      "by": "本组"
+    },
+    {
+      "date": "2026-10-29",
+      "object": "AI 助手能力",
+      "basis": "作业第八部分「AI 能力服务于地图」",
+      "change": "新增概念检索 / 路线对比 / 学习路径生成三项能力，全部基于地图结构化数据检索实现，答案可回溯到节点与来源",
+      "reason": "确保 AI 回答不编造课程、论文与人物关系",
+      "by": "本组"
+    }
+  ],
+  "limits": [
+    "生成模型细节（采样器、训练技巧）只覆盖到“能解释现象”的深度，未涉及数学推导——这是有意选择的边界",
+    "课程关联基于 2019 级工业设计培养方案；若本组适用其他年级/专业，需替换为对应方案并重新核对课程号",
+    "UIST 的 CCF 类别归属、部分被反爬拦截的官网链接尚未完成核实，已在来源清单逐条标注",
+    "评测基准只记录了与本组工具选型相关的三个，未覆盖视频/3D 生成评测",
+    "“审美趋同”的机制性证据不足，目前标注为团队推断，欢迎同学提供反例"
+  ],
+  "nextSteps": [
+    "对照本组实际适用的培养方案（专业/年级）核对课程号与先修关系",
+    "完成一次风格 LoRA 训练实验后，把 m-style / t-lora 的理解程度从“待深入学习”更新为“已经尝试”，并在更新记录中登记",
+    "把每周文献检查（r-venue）中筛出的新工作放入“待核实”清单，人工复核后并入正式节点",
+    "邀请 3 名非本组同学按互评要求浏览本地图并记录反馈处理结果"
+  ]
+}
