@@ -54,32 +54,82 @@ async function loadHome() {
 
 // ==================== 地图详情页逻辑 ====================
 
+// ---- 领域地图资源按需动态加载（原 index.html 无需任何修改）----
+let __domainAssetsPromise = null;
+function ensureDomainAssets() {
+  if (!__domainAssetsPromise) {
+    __domainAssetsPromise = Promise.all([
+      new Promise((resolve, reject) => {
+        if (document.querySelector('link[data-domain-css]')) { resolve(); return; }
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/domain.css';
+        link.setAttribute('data-domain-css', '1');
+        link.onload = resolve;
+        link.onerror = reject;
+        document.head.appendChild(link);
+      }),
+      new Promise((resolve, reject) => {
+        if (typeof window.renderDomainPage === 'function') { resolve(); return; }
+        const s = document.createElement('script');
+        s.src = 'js/domain.js';
+        s.onload = () => resolve();
+        s.onerror = reject;
+        document.head.appendChild(s);
+      })
+    ]);
+  }
+  return __domainAssetsPromise;
+}
+
 async function loadMapDetail(mapId) {
   const homePage = document.getElementById('homePage');
   const detailPage = document.getElementById('mapDetailPage');
-  
+
   homePage.style.display = 'none';
   detailPage.style.display = 'block';
-  
-  detailPage.innerHTML = `
-    <a href="#/" class="back-btn">← 返回主页</a>
-    <div class="map-detail-container">
-      <div class="map-content-area">
-        <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  // 非领域地图先显示加载壳（领域地图有自己的外壳，不在这里重建）
+  if (mapId !== 'domain') {
+    detailPage.innerHTML = `
+      <a href="#/" class="back-btn">← 返回主页</a>
+      <div class="map-detail-container">
+        <div class="map-content-area">
+          <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="comment-sidebar">
+          <h3>💬 留言反馈</h3>
+          <div class="loader"><div class="dot"></div><div class="dot"></div></div>
+        </div>
       </div>
-      <div class="comment-sidebar">
-        <h3>💬 留言反馈</h3>
-        <div class="loader"><div class="dot"></div><div class="dot"></div></div>
-      </div>
-    </div>
-  `;
+    `;
+  }
 
   const data = await loadMapsData();
   if (!data || !data[mapId]) {
-    detailPage.querySelector('.map-content-area').innerHTML = '<p>地图不存在</p>';
+    detailPage.innerHTML = '<a href="#/" class="back-btn">← 返回主页</a><p style="padding:24px">地图不存在</p>';
     return;
   }
-  
+
+  // 领域地图：动态加载 css/domain.css 与 js/domain.js 后使用独立渲染器（含自己的留言区），且不重建外壳
+  if (mapId === 'domain') {
+    if (!document.getElementById('domainApp')) {
+      detailPage.innerHTML = `
+        <a href="#/" class="back-btn">← 返回主页</a>
+        <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      `;
+    }
+    try {
+      await ensureDomainAssets();
+      await window.renderDomainPage();
+      loadComments('domain');
+    } catch (err) {
+      console.error('领域地图资源加载失败:', err);
+      detailPage.innerHTML = '<a href="#/" class="back-btn">← 返回主页</a><p style="padding:24px">领域地图资源加载失败，请刷新重试。</p>';
+    }
+    return;
+  }
+
   renderMapDetail(data[mapId]);
   loadComments(mapId);
 }
@@ -520,8 +570,10 @@ function router() {
     document.getElementById('mapDetailPage').style.display = 'none';
     loadHome();
   } else if (path.startsWith('/map/')) {
-    const mapId = path.split('/map/')[1].replace(/\/$/, '');
+    const rest = path.slice('/map/'.length).replace(/\/+$/, '').split('/').filter(Boolean);
+    const mapId = rest[0];
     if (['domain', 'ecosystem', 'cognitive'].includes(mapId)) {
+      window.__routeRest = rest.slice(1);   // 子路径：domain 的视图/节点深链
       loadMapDetail(mapId);
     } else {
       navigate('/');
