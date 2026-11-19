@@ -82,6 +82,34 @@ function ensureDomainAssets() {
   return __domainAssetsPromise;
 }
 
+// ---- 生态地图资源按需动态加载 ----
+let __ecoAssetsPromise = null;
+function ensureEcosystemAssets() {
+  if (!__ecoAssetsPromise) {
+    __ecoAssetsPromise = Promise.all([
+      new Promise((resolve, reject) => {
+        if (document.querySelector('link[data-ecosystem-css]')) { resolve(); return; }
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/ecosystem.css';
+        link.setAttribute('data-ecosystem-css', '1');
+        link.onload = resolve;
+        link.onerror = reject;
+        document.head.appendChild(link);
+      }),
+      new Promise((resolve, reject) => {
+        if (typeof window.renderEcosystemPage === 'function') { resolve(); return; }
+        const s = document.createElement('script');
+        s.src = 'js/ecosystem.js';
+        s.onload = () => resolve();
+        s.onerror = reject;
+        document.head.appendChild(s);
+      })
+    ]);
+  }
+  return __ecoAssetsPromise;
+}
+
 async function loadMapDetail(mapId) {
   const homePage = document.getElementById('homePage');
   const detailPage = document.getElementById('mapDetailPage');
@@ -126,6 +154,25 @@ async function loadMapDetail(mapId) {
     } catch (err) {
       console.error('领域地图资源加载失败:', err);
       detailPage.innerHTML = '<a href="#/" class="back-btn">← 返回主页</a><p style="padding:24px">领域地图资源加载失败，请刷新重试。</p>';
+    }
+    return;
+  }
+
+  // 生态地图：同领域地图，独立渲染器（css/ecosystem.css + js/ecosystem.js）
+  if (mapId === 'ecosystem') {
+    if (!document.getElementById('ecosystemApp')) {
+      detailPage.innerHTML = `
+        <a href="#/" class="back-btn">← 返回主页</a>
+        <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      `;
+    }
+    try {
+      await ensureEcosystemAssets();
+      await window.renderEcosystemPage();
+      loadComments('ecosystem');
+    } catch (err) {
+      console.error('生态地图资源加载失败:', err);
+      detailPage.innerHTML = '<a href="#/" class="back-btn">← 返回主页</a><p style="padding:24px">生态地图资源加载失败，请刷新重试。</p>';
     }
     return;
   }
@@ -249,36 +296,99 @@ function levelClass(level) {
 
 function renderEcosystemMap(content) {
   let html = '';
-  
+
+  if (content.meta) {
+    html += `<div class="content-section">
+      <div class="item-detail" style="border:1px dashed var(--border-color,#444);border-radius:8px;padding:10px 14px;">
+        <strong>版本说明：</strong>${content.meta.version}（更新于 ${content.meta.updated}）<br>
+        ${content.meta.ccfNote || ''}
+      </div>
+    </div>`;
+  }
+
   if (content.nodes) {
     html += `<div class="content-section">
-      <h3>关键节点</h3>`;
+      <h3>关键节点（${content.nodes.length} 个入口）</h3>`;
     content.nodes.forEach(node => {
+      const statusTag = node.status ? `<span class="tag ${node.status === '已核实' ? 'level-understood' : node.status === '推断' ? 'level-tried' : 'level-pending'}">${node.status}</span>` : '';
+      const eraTag = node.era ? `<span class="tag course">${node.era === '奠基' ? '🏛' : '⚡'} ${node.era}</span>` : '';
+      const domainTag = node.domain ? `<span class="tag course">🧭 领域关联：${node.domain}</span>` : '';
+      const srcTag = node.src ? `<span class="tag course">📎 ${node.src}</span>` : '';
       html += `
         <div class="eco-node">
           <div class="node-name">${node.name} <span class="node-type">${node.type}</span></div>
           <div class="item-detail">主要贡献：${node.contribution || ''}</div>
           <div class="item-detail">入选理由：${node.reason || ''}</div>
+          <div class="item-meta">${statusTag} ${eraTag} ${domainTag} ${srcTag}</div>
         </div>`;
     });
     html += `</div>`;
   }
-  
+
   if (content.edges) {
     html += `<div class="content-section">
-      <h3>关系网络</h3>`;
+      <h3>关系网络（${content.edges.length} 条，附依据）</h3>`;
     content.edges.forEach(edge => {
+      const statusTag = edge.status ? `<span class="tag ${edge.status === '已核实' ? 'level-understood' : edge.status === '推断' ? 'level-tried' : 'level-pending'}">${edge.status}</span>` : '';
+      const basisTag = edge.basis ? `<span class="tag course">📎 ${edge.basis}</span>` : '';
       html += `
         <div class="eco-edge">
           <strong>${edge.from}</strong>
           <span class="edge-relation"> — ${edge.relation}→ </span>
           <strong>${edge.to}</strong>
           <div class="item-detail" style="margin-top:4px;">${edge.detail || ''}</div>
+          <div class="item-meta" style="margin-top:4px;">${basisTag} ${statusTag}</div>
         </div>`;
     });
     html += `</div>`;
   }
-  
+
+  if (content.dynamics) {
+    html += `<div class="content-section">
+      <h3>生态如何运转（${content.dynamics.length} 个维度案例）</h3>`;
+    content.dynamics.forEach(dyn => {
+      html += `
+        <div class="content-item">
+          <div class="item-name">${dyn.dimension || ''}</div>
+          <div class="item-detail"><strong>追问：</strong>${dyn.question || ''}</div>
+          <div class="item-detail"><strong>案例：</strong>${dyn.case || ''}</div>
+          <div class="item-detail"><strong>依据：</strong>${dyn.basis || ''}</div>
+          <div class="item-detail"><strong>当前判断：</strong>${dyn.judgment || ''}</div>
+          <div class="item-detail"><strong>尚存疑问：</strong>${dyn.doubts || ''}</div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (content.updates) {
+    html += `<div class="content-section">
+      <h3>更新记录</h3>`;
+    content.updates.forEach(u => {
+      html += `
+        <div class="content-item">
+          <div class="item-name">${u.date} · ${u.object || ''}</div>
+          <div class="item-detail"><strong>依据：</strong>${u.basis || ''}</div>
+          <div class="item-detail"><strong>修改：</strong>${u.change || ''}</div>
+          <div class="item-detail"><strong>原因：</strong>${u.reason || ''}</div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (content.sources) {
+    html += `<div class="content-section">
+      <h3>本图来源（${content.sources.length} 条）</h3>`;
+    content.sources.forEach(s => {
+      const statusTag = `<span class="tag ${s.status === '已核实' ? 'level-understood' : 'level-pending'}">${s.status}</span>`;
+      html += `
+        <div class="content-item">
+          <div class="item-name">${s.id} · ${s.title} ${statusTag}</div>
+          ${s.note ? `<div class="item-detail">${s.note}</div>` : ''}
+        </div>`;
+    });
+    html += `</div>`;
+  }
+
   return html;
 }
 
